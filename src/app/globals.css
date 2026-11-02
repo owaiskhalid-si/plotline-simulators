@@ -1,0 +1,282 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-hairline: var(--hairline);
+  --color-brand: var(--brand);
+  --color-series-1: var(--series-1);
+  --color-series-2: var(--series-2);
+  --color-series-3: var(--series-3);
+  --color-good: var(--good);
+  --color-good-text: var(--good-text);
+  --color-warning: var(--warning);
+  --color-critical: var(--critical);
+  --color-critical-text: var(--critical-text);
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-heading: var(--font-newsreader), ui-serif, Georgia, serif;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+
+  --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  --animate-draw: draw 1.8s cubic-bezier(0.65, 0, 0.25, 1) both;
+  --animate-fade: fade 0.6s ease-out both;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ── Light: warm ledger paper, ink, one vermilion accent ─────────────── */
+:root {
+  --background: #f3f0e8;
+  --paper-deep: #ebe7dc;
+  --surface: #fcfbf8;
+  --foreground: #141311;
+  --ink-2: #55524b;
+  --ink-3: #8a867c;
+  --hairline: #e2ddd0;
+  --brand: #c8411a;
+
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-1-wash: rgb(42 120 214 / 0.1);
+  --series-1-band: rgb(42 120 214 / 0.16);
+  --grid: #e4e0d5;
+  --axis: #c6c1b3;
+  --div-neg: #d03b3b;
+  --div-mid: #f0efec;
+  --div-pos: #2a78d6;
+
+  --good: #0ca30c;
+  --good-text: #006300;
+  --warning: #fab219;
+  --critical: #d03b3b;
+  --critical-text: #b42323;
+
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: #fffefb;
+  --popover-foreground: var(--foreground);
+  --primary: #141311;
+  --primary-foreground: #fbfaf6;
+  --secondary: #ebe7dc;
+  --secondary-foreground: #141311;
+  --muted: #ebe7dc;
+  --muted-foreground: #55524b;
+  --accent: #ebe7dc;
+  --accent-foreground: #141311;
+  --destructive: #d03b3b;
+  --border: #e2ddd0;
+  --input: #d8d3c5;
+  --ring: #8a867c;
+  --radius: 0.5rem;
+}
+
+/* ── Dark: carbon, not a flipped light theme ─────────────────────────── */
+.dark {
+  --background: #0e0e0d;
+  --paper-deep: #151514;
+  --surface: #1a1a19;
+  --foreground: #f4f2ec;
+  --ink-2: #c3c2b7;
+  --ink-3: #898781;
+  --hairline: #2c2c2a;
+  --brand: #f0703f;
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-1-wash: rgb(57 135 229 / 0.12);
+  --series-1-band: rgb(57 135 229 / 0.2);
+  --grid: #2a2a28;
+  --axis: #3a3a37;
+  --div-neg: #e66767;
+  --div-mid: #383835;
+  --div-pos: #3987e5;
+
+  --good: #0ca30c;
+  --good-text: #3cc13c;
+  --warning: #fab219;
+  --critical: #d03b3b;
+  --critical-text: #f07575;
+
+  --card: var(--surface);
+  --card-foreground: var(--foreground);
+  --popover: #222221;
+  --popover-foreground: var(--foreground);
+  --primary: #f4f2ec;
+  --primary-foreground: #121211;
+  --secondary: #262625;
+  --secondary-foreground: #f4f2ec;
+  --muted: #262625;
+  --muted-foreground: #c3c2b7;
+  --accent: #262625;
+  --accent-foreground: #f4f2ec;
+  --destructive: #e66767;
+  --border: #2c2c2a;
+  --input: #3a3a37;
+  --ring: #898781;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "ss02";
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--brand) 22%, transparent);
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  /* Engineering-paper grid used behind hero sections. */
+  .bg-graph {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to right, color-mix(in oklab, var(--foreground) 3%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 3%, transparent) 1px, transparent 1px);
+    background-size:
+      96px 96px,
+      96px 96px,
+      24px 24px,
+      24px 24px;
+  }
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .dark .grain::after {
+    mix-blend-mode: screen;
+    opacity: 0.25;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+}
+
+/* Recharts focus rings are noisy; the tooltip is the focus affordance. */
+.recharts-wrapper *:focus {
+  outline: none;
+}
+.recharts-surface {
+  overflow: visible;
+}
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-break {
+    break-inside: avoid;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
+.print-only {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
